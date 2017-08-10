@@ -1,0 +1,48 @@
+server:
+  port: 8080
+
+management:
+  context-path: /system
+  security:
+    enabled: false
+
+logging:
+  level: INFO
+
+spring:
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      enabled: true
+      ribbon:
+        enabled: true
+      discovery:
+        enabled: true
+        register: true
+        preferIpAddress: true
+        heartbeat:
+          enabled: true
+          ttlValue: 10
+      config:
+        enabled: false
+
+    config:
+      server:
+        git:
+          uri: https://github.com/otecteng/springcloud-workshop.git
+          searchPaths: '/config-data/{application}/{profile}'
+          repos:
+            none_prod:
+              pattern:
+                - '*/dev'
+                - '*/qa'
+                - '*/contract'
+                - '*/uat'
+              uri: git@gitlab.com:tli2/devops-configuration-data.git
+              searchPaths: '{application}/{profile}'
+            prod:
+              pattern:
+                - '*/prod'
+              uri: git@gitlab.com:otr-as/devops-configuration-data.git
+              searchPaths: '{application}/{profile}'
