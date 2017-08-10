@@ -15,9 +15,7 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: dev
       MYSQL_DATABASE: test
-    volumes:
-      - ./db/mysql:/var/lib/mysql
-      - ./db/mysql/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+      MYSQL_ROOT_HOST: '%'
     command:
       - --character-set-server=utf8mb4
       - --collation-server=utf8mb4_unicode_ci
