@@ -1,0 +1,28 @@
+server:
+  port: 4567
+
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    config:
+      enabled: true
+      discovery:
+        serviceId: config-server
+        enabled: true
+      fail-fast: true
+    consul:
+      host: localhost
+      port: 8500
+      enabled: true
+      ribbon:
+        enabled: true
+      discovery:
+        enabled: true
+        register: true
+        preferIpAddress: true
+        heartbeat:
+          enabled: true
+          ttlValue: 10
+      config:
+        enabled: false
