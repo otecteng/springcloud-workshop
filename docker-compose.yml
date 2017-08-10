@@ -1,0 +1,40 @@
+version: '2'
+services:
+  consul:
+    container_name: workshop-consul
+    command: consul agent -dev -bind=0.0.0.0 -client=0.0.0.0
+    image: consul:0.7.2
+    ports:
+      - 8500:8500
+
+  mysql:
+    container_name: workshop-mysql
+    image: mysql:5.7
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: dev
+      MYSQL_DATABASE: test
+    volumes:
+      - ./db/mysql:/var/lib/mysql
+      - ./db/mysql/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+      - --lower_case_table_names=1
+
+  redis:
+    container_name: workshop-redis
+    tty: true
+    image: redis
+    stdin_open: true 
+
+  rabbitmq:
+    container_name: workshop-rabbitmq
+    image: "rabbitmq:3-management"
+    tty: true
+    environment:
+      - RABBITMQ_ERLANG_COOKIE='secret_cookie'
+    ports:
+      - "15672:15672"
+      - "5672:5672"
