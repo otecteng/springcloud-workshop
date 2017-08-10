@@ -2,6 +2,12 @@ spring:
   application:
     name: product
   cloud:
+    config:
+      enabled: true
+      discovery:
+        serviceId: config-server
+        enabled: true
+      fail-fast: true
     consul:
       host: localhost
       port: 8500
