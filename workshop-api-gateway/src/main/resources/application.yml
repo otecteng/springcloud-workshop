@@ -18,6 +18,9 @@ headers:
 zuul:
   ignoredPatterns: /system/**,/login,/user
   routes:
+    api:
+      path: /api/**
+      serviceId: bff
     integration:
       path: /products/**
       serviceId: product
