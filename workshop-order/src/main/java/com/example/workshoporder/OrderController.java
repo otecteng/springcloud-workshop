@@ -1,5 +1,6 @@
 package com.example.workshoporder;
 
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
@@ -7,12 +8,15 @@ import java.util.List;
 @RestController
 @RequestMapping("/orders")
 public class OrderController {
+    @Autowired
+    RabbitTemplate rabbitTemplate;
 
     @Autowired
     OrderRepository orderRepository;
 
     @GetMapping
     public List<Order> list(){
+        rabbitTemplate.convertAndSend("spring-boot", "Hello from RabbitMQ!");
         return orderRepository.findAll();
     }
 
