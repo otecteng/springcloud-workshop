@@ -20,6 +20,7 @@ spring:
       discovery:
         enabled: true
         register: true
+        instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
         preferIpAddress: true
         heartbeat:
           enabled: true
@@ -31,6 +32,7 @@ spring:
       server:
         git:
           uri: https://github.com/otecteng/springcloud-workshop.git
+#          uri: file:///Users/tli/Documents/learning/springcloud/workshop/
           searchPaths: '/config-data/{application}/{profile}'
           repos:
             none_prod:
