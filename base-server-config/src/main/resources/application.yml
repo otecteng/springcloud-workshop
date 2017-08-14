@@ -11,22 +11,22 @@ logging:
 
 spring:
   cloud:
-    consul:
-      host: localhost
-      port: 8500
-      enabled: true
-      ribbon:
-        enabled: true
-      discovery:
-        enabled: true
-        register: true
-        instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
-        preferIpAddress: true
-        heartbeat:
-          enabled: true
-          ttlValue: 10
-      config:
-        enabled: false
+#    consul:
+#      host: ${CONSUL_SERVER:localhost}
+#      port: 8500
+#      enabled: true
+#      ribbon:
+#        enabled: true
+#      discovery:
+#        enabled: true
+#        register: true
+#        instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+#        preferIpAddress: true
+#        heartbeat:
+#          enabled: true
+#          ttlValue: 10
+#      config:
+#        enabled: false
 
     config:
       server:

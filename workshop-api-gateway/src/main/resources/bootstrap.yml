@@ -7,10 +7,8 @@ spring:
   cloud:
     config:
       enabled: true
-      discovery:
-        serviceId: config-server
-        enabled: true
       fail-fast: true
+      uri: http://ec2-54-179-179-235.ap-southeast-1.compute.amazonaws.com:8080/
     consul:
       host: localhost
       port: 8500
