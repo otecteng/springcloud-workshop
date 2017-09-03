@@ -1,3 +1,6 @@
+server:
+  port: 8080
+
 spring:
   application:
     name: order
@@ -7,7 +10,7 @@ spring:
       fail-fast: true
       uri: http://ec2-54-179-179-235.ap-southeast-1.compute.amazonaws.com:8080/
     consul:
-      host: localhost
+      host: ${CONSUL_HOST:localhost}
       port: 8500
       enabled: true
       ribbon:
@@ -16,7 +19,8 @@ spring:
         enabled: true
         register: true
         preferIpAddress: true
-        instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+        tags: ${CONSUL_TAGS:dev}
+        defaultQueryTag: ${CONSUL_TAGS:dev}
         heartbeat:
           enabled: true
           ttlValue: 10
