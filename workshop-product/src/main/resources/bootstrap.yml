@@ -2,12 +2,13 @@ spring:
   application:
     name: product
   cloud:
-    config:
-      enabled: true
-      fail-fast: true
-      uri: http://ec2-54-179-179-235.ap-southeast-1.compute.amazonaws.com:8080/
+#    config:
+#      enabled: true
+#      fail-fast: true
+##      uri: http://localhost:8080/
+#      uri: http://ec2-54-179-179-235.ap-southeast-1.compute.amazonaws.com:8080/
     consul:
-      host: localhost
+      host: ${CONSUL_HOST:localhost}
       port: 8500
       enabled: true
       ribbon:

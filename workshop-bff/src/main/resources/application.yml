@@ -1,2 +1,14 @@
 server:
   port: 7890
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 1000
+
+logging:
+  level:
+    feign: DEBUG

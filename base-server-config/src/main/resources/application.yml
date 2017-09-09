@@ -31,8 +31,8 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/otecteng/springcloud-workshop.git
-#          uri: file:///Users/tli/Documents/learning/springcloud/workshop/
+#          uri: https://github.com/otecteng/springcloud-workshop.git
+          uri: file:///Users/tli/Documents/learning/springcloud/workshop/
           searchPaths: '/config-data/{application}/{profile}'
           repos:
             none_prod:
